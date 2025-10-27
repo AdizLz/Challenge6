@@ -1,28 +1,52 @@
 # Reto6 - API de usuarios (Spark Java)
 
-Pequeña API REST que gestiona usuarios en memoria (Entrega sprint 1).
+Small REST API that manages users in memory (Sprint 1 release).
 
-Requisitos mínimos:
+## Description
+
+This API allows you to manage users using an in-memory storage (ConcurrentHashMap).
+You can list, create, update, query, and delete users using RESTful endpoints.
+
+The goal is to practice building APIs with Java 17 and Spark Java.
+
+Minimum requirements:
 - Java 17
 - Maven
 
-Cómo compilar y ejecutar (Windows):
+How to compile and run (Windows):
 
 ```cmd
 cd C:\Users\Soporte\Downloads\Reto6
 mvn clean package -DskipTests
 java -jar target\Reto6-1.0-SNAPSHOT.jar
 ```
+## User JSON Format
+
+```cmd
+{
+  "id": "1",
+  "name": "John Doe",
+  "email": "john@example.com"
+}
+```
 
 Endpoints:
-- GET /users — Lista todos los usuarios
-- GET /users/:id — Recupera el usuario con id
-- POST /users/:id — Añade un usuario (body JSON)
-- PUT /users/:id — Edita un usuario existente (body JSON)
-- OPTIONS /users/:id — Comprueba si existe el usuario
-- DELETE /users/:id — Elimina un usuario
+- GET /users — List all users
+- GET /users/:id — Retrieves the user with id
+- POST /users/:id — Adds a user (JSON body)
+- PUT /users/:id — Edits an existing user (JSON body)
+- OPTIONS /users/:id — Checks if the user exists
+- DELETE /users/:id — Deletes a user
 
-Notas:
-- El almacenamiento es en memoria (ConcurrentHashMap). Hay un usuario semilla con id "1".
-- Ver `DECISIONS.md` para decisiones de diseño.
+Notes:
+- Storage is in memory (ConcurrentHashMap). There is a seed user with id "1".
+- See `DECISIONS.md` for design decisions.
 
+http://localhost:55603/users
+ — GET → [] (lista vacía de usuarios)
+
+http://localhost:55603/users/1
+ — GET → {"message":"User not found"}
+
+http://localhost:55603/items
+ — GET → Lista de artículos, ejemplo:
