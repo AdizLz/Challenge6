@@ -13,7 +13,7 @@ Decisions and rationale
 3) Data storage
 - In-memory ConcurrentHashMap in `UserService`.
 - Rationale: Sprint deliverable doesn't require persistence; in-memory store keeps implementation simple and deterministic for tests.
-- Note: Seeded with a sample user (id "1") for quick manual verification.
+- Note: No seeded users are present by default; the store starts empty to avoid surprises in automated tests.
 
 4) Routes and HTTP semantics
 - Implemented routes exactly as requested using Spark verbs and paths.
@@ -27,10 +27,14 @@ Decisions and rationale
 - Rationale: Aligns with common REST practices and provides clear client feedback.
 
 5) Port
-- Defaulted to 4567 (Spark's typical default).
-- Rationale: Avoid privileged ports and keep default Spark behavior.
+- Server runs on port 55603 (configured in `Main.java`).
+- Rationale: Chosen to avoid conflicts and match the environment where the project was developed.
 
-6) Limitations & Next steps
+6) Static files (CSS/JS)
+- Location: `src/main/resources/public` (served with `staticFiles.location("/public")`).
+- Rationale: Standard location for Spark static files. Previously `public` was inside `templates/` — moved to `resources/public` so Spark serves them correctly.
+
+7) Limitations & Next steps
 - No persistent storage (file or DB) — add a repository layer for production.
 - No authentication/authorization — add JWT or OAuth if required.
 - No validation beyond basic JSON parsing — add field validation.

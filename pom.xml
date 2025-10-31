@@ -26,6 +26,11 @@
             <version>${spark.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.sparkjava</groupId>
+            <artifactId>spark-template-mustache</artifactId>
+            <version>2.7.1</version>
+        </dependency>
         <!-- Gson for JSON serialization -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -33,11 +38,31 @@
             <version>${gson.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.1</version>
+        </dependency>
+
+        <!-- HikariCP - Connection Pool -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>5.1.0</version>
+        </dependency>
+
         <!-- SLF4J + Logback for logging -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
+        </dependency>
+
+        <!-- H2 embedded DB for local development/fallback -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.2.220</version>
         </dependency>
     </dependencies>
 
